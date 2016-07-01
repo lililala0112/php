@@ -24,21 +24,23 @@
         echo '檔案名稱:'.$_FILES['file_upload']['name'];
         echo '檔案類型<br/>'.$_FILES['file_upload']['type'];
         echo '檔案大小<br/>'.$_FILES['file_upload']['size'];
-
       }
    }
 
 
 ?>
-<table>
+<table id="uploads">
 
+<!-- 叫出全部已經上傳的檔案/檔案尺寸 -->
 <?php 
-  $variable = glob("./upload/*");
+  $target_dir = "./upload/";
+  //取出目前有的全部檔案
+  $variable = glob($target_dir."*");
   foreach ($variable as $filename ) {
     echo '<tr>';
     echo '<td>' . basename($filename) . '</td>';
-    echo '<td>' . filesize($filename) .'</td>';
-    echo '<td><a href=?del=true&filename='.$filename.' onclick="checkDel(\''.$filename.'\');">Delete</a></td>';
+    echo '<td>' . filesize($filename) . '</td>';
+    echo '<td><a href=?del=true&filename=' .basename($filename). '>Delete</a></td>';
     echo '</tr>';
   }
 
@@ -50,21 +52,20 @@
 
 </body>
 </html>
-
+<script src="https://code.jquery.com/jquery-1.11.3.js"></script>
 <script>
-
-   function checkDel(filename){
-
-       var delq = confirm('Are you sure,delete the file'+ filename);
-   
-       if( delq ){
+  $('#uploads').on('click','a',function (){
+      // $(this).closest('tr').remove();
+      var delq = confirm('Are you sure?delete the file <?php echo $_GET["filename"] ?>');
+      if( delq ){
         <?php 
-         if (isset($_GET['filename']) && $_GET['del'] == true) {
-             unlink($_GET['filename']);
-           }
+        if (isset($_GET['filename']) && $_GET['del'] == true) {
+            unlink($target_dir . $_GET['filename']);
+        }
         ?>
-       }
-   }
+      }
+  }); 
+
  
 </script>
       
