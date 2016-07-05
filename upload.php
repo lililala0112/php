@@ -40,7 +40,7 @@
     echo '<tr>';
     echo '<td>' . basename($filename) . '</td>';
     echo '<td>' . filesize($filename) . '</td>';
-    echo '<td><a href=?del=true&filename=' .basename($filename). '>Delete</a></td>';
+    echo '<td><a href="upload_get.php?del=true&amp;filename=' .basename($filename).'">Delete</a></td>';
     echo '</tr>';
   }
 
@@ -55,15 +55,11 @@
 <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
 <script>
   $('#uploads').on('click','a',function (){
+    console.log('click');
+       // setTimeout(function (){ confirm('ok'); },1000);
       // $(this).closest('tr').remove();
-      var delq = confirm('Are you sure?delete the file <?php echo $_GET["filename"] ?>');
-      if( delq ){
-        <?php 
-        if (isset($_GET['filename']) && $_GET['del'] == true) {
-            unlink($target_dir . $_GET['filename']);
-        }
-        ?>
-      }
+// setInterval(function(){ console.log('ok') }, 1000);
+
   }); 
 
  

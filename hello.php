@@ -22,6 +22,7 @@
 <?php
 $car = ["Volvo", "BMW", "Toyota"];
 echo "I like this car". $car[0] .",how about u";
+echo var_dump($car);
 ?>
 
 <!-- 
