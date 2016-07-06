@@ -13,7 +13,8 @@
   fwrite($fh, '<h1>Hello world!</h1>');
   fclose($fh);
   //刪除檔案
-  unlink('fopen_a.php');
+  // unlink('fopen_a.php');
+  $file = fopen("test.txt","r");
 
   ?>
 
