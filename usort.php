@@ -60,6 +60,31 @@
    $test2 = array(4,2,5,6,7);
    $var = array_diff_assoc($test1,$test2);
    print_r($var);//Array ( [0] => 1 [2] => 3 [3] => 4 [4] => 5 )
+
+
+   /* filter*/
+   $place = array(
+   		'榮星花園','復華花園新城','台北批發市場','臺北花市','藝術村','櫻花棒球場'
+   	);
+   $keyin = '花';
+   function filter($val){
+   	  if(preg_match('/'.$keyin.'/',$val)){
+   	  	return $val;
+   	  };
+   }
+
+   $filterResult = array_filter($place,'filter');
+
+   print_r($filterResult);
+
+
+   
+
+
+
+
+
+
   
 
  ?>
