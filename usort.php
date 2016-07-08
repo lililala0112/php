@@ -68,6 +68,8 @@
    	);
    $keyin = '花';
    function filter($val){
+   	global $keyin;
+   	
    	  if(preg_match('/'.$keyin.'/',$val)){
    	  	return $val;
    	  };
