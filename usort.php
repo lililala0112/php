@@ -66,16 +66,23 @@
    $place = array(
    		'榮星花園','復華花園新城','台北批發市場','臺北花市','藝術村','櫻花棒球場'
    	);
+
    $keyin = '花';
+
    function filter($val){
-   	  if(preg_match('/'.$keyin.'/',$val)){
+
+   	  global $keyin;
+   	  if(preg_match("/$keyin/",$val)){
    	  	return $val;
    	  };
+
    }
 
    $filterResult = array_filter($place,'filter');
+   $fl_array = preg_grep("/$keyin/", $place);
 
    print_r($filterResult);
+   print_r($fl_array);
 
 
    
