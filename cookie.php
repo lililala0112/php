@@ -37,6 +37,21 @@
 ?>
 
 
+<!-- 當天過期 -->
+<?php 
+  
+  $setttime = strtotime(date('Y-m-d 23:59:59'));
+  echo $setttime;
+  setcookie('aa','aaaaa|'.$setttime , $setttime);
+  $datett = new DateTime();
+  list($value, $expiry) = explode("|", $_COOKIE["aa"]); 
+  $datett->setTimestamp( $expiry );
+  echo '取出過期的時間是:'.$datett ->format('U = Y-m-d H:i:s') . "\n";
+
+
+ ?>
+
+
 
 </body>
 </html>

@@ -36,8 +36,9 @@ associative -->
     );?>
    <p> 
    <?php
-   echo 'he is '.$peter['age'].' years old ,his '.$peter['height'].' and '. $peter['weight'];
-?>
+   echo 'he is '.$peter['age'].' years old ,his '.$peter['height'].' and '. $peter['weight'].'<br/>';
+
+  ?>
     </p>
 
 
