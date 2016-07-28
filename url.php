@@ -4,6 +4,9 @@
 <body>
 <?php
   
+  /*
+  *參照教學:http://www.phpini.com/php/php-curl-post-get
+  */
    $dataArray = array(
      'action'=> 'ub_newsclass_list',
      'datas[classid]'=>'all',
@@ -11,14 +14,17 @@
      'datas[lang]'=>'tw',
      'datas[loc]'=>'hccg'
    	);
+
    $data = http_build_query($dataArray);
-   $url = "http://hccg.youbike.com.tw/cht/useAPI.php?".$data;
 
    /*
    *PHP 傳送 GET 請求
    */
 
-   
+   $url = "http://hccg.youbike.com.tw/cht/useAPI.php?".$data;
+
+   //file_get_contents()取得回傳
+   //json_decode轉成json格式
    $getdatas = json_decode(file_get_contents($url),true);
    var_dump($getdatas);
    echo $getdatas[0]['resdata'];
